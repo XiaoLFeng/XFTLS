@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>右键菜单</title>
+    <style type="text/css">
+        #right-menu{
+            position: absolute;
+            width: 200px;
+            height: auto;
+            border: 1px #ccc solid;
+            display: none;
+            padding:2px 0; 
+            box-shadow: 5px 5px 5px #ccc;
+        }
+        .menu-item{
+            height: 25px;
+            margin:4px 0; 
+            padding:0 10px;
+            cursor: pointer;
+        }
+        .menu-item:hover{
+            background-color: #ccc;
+        }
+        .menu-item-separator{
+            border-top:1px #ccc solid;
+            height: 1px;
+        }
+    </style>
+</head>
+<body>
+ <!-- CSS -->
+ <link rel="stylesheet" href="./sources/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+<!-- 自定义右键菜单dom -->
+<ul class="mdui-menu" id="right-menu">
+    <li class="mdui-menu-item">
+        <a href="javascript:;" class="mdui-ripple">Refresh</a>
+    </li>
+    <li class="mdui-menu-item">
+        <a href="javascript:;" class="mdui-ripple">Settings</a>
+    </li>
+    <li class="mdui-menu-item">
+        <a href="javascript:;" class="mdui-ripple">Send feedback</a>
+    </li>
+    <li class="mdui-menu-item">
+        <a href="javascript:;" class="mdui-ripple">Help</a>
+    </li>
+    <li class="mdui-menu-item">
+        <a href="javascript:;" class="mdui-ripple">Signout</a>
+    </li>
+</ul>
+    <script type="text/javascript">
+        window.oncontextmenu = function(e){
+            e.preventDefault(); //阻止浏览器自带的右键菜单显示
+            var menu = document.getElementById("right-menu");
+            menu.style.display = "block"; //将自定义的“右键菜单”显示出来
+            menu.style.left = e.clientX + "px";  //设置位置，跟随鼠标
+            menu.style.top = e.clientY+"px"; 
+        }
+        window.onclick = function(e){ //点击窗口，右键菜单隐藏
+            var menu = document.getElementById("right-menu");
+            menu.style.display = "none";
+        }
+    </script>
+</body>
+</html>
